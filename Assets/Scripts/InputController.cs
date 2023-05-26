@@ -15,7 +15,7 @@ public class InputController : MonoBehaviour
     public event Action LMBButton;
     public event Action RMBButton; 
 
-    void Start()
+    void Awake()
     {
         Instance = this;
     }
