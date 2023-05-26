@@ -23,7 +23,7 @@ public class HeadBob : MonoBehaviour
         float movementSpeed = (transform.position - _lastPos).magnitude / Time.deltaTime;
         if (movementSpeed <= 0.01f)
         {
-            _camera.localPosition = Vector3.Slerp(_camera.localPosition, _originalPosition, DefaultSmoothTransition / Time.deltaTime);
+            _camera.localPosition = Vector3.Lerp(_camera.localPosition, _originalPosition, DefaultSmoothTransition / Time.deltaTime);
             _timer = 0f;
             return;
         }
