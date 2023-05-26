@@ -2404,6 +2404,7 @@ GameObject:
   - component: {fileID: 2090519095}
   - component: {fileID: 2090519090}
   - component: {fileID: 2090519089}
+  - component: {fileID: 2090519096}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2543,7 +2544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d410624eb55681845af6ccc64290a34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: {x: 100, y: 100}
+  sensitivity: {x: 200, y: 200}
   smoothAmount: {x: 100, y: 100}
   lookAngleMin: -90
   lookAngleMax: 90
@@ -2581,3 +2582,19 @@ MonoBehaviour:
   BobAmount: 0.03
   DefaultSmoothTransition: 0.001
   _camera: {fileID: 330585546}
+--- !u!114 &2090519096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090519084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ede555a7270ba84dacb3a0b282ea78a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MousePositionX: 0
+  MousePositionY: 0
+  HorizontalInput: 0
+  VerticalInput: 0

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HeadBob : MonoBehaviour
 {
-    public float BobSpeed = 0.2f;  // Speed of the camera bobbing
-    public float BobAmount = 0.1f;  // Amount of camera bobbing
+    public float BobSpeed = 0.2f;
+    public float BobAmount = 0.1f;
     public float DefaultSmoothTransition = 0.1f;
 
     [SerializeField] private Transform _camera;
@@ -32,7 +30,5 @@ public class HeadBob : MonoBehaviour
         _camera.localPosition = new Vector3(_originalPosition.x, yPos, _originalPosition.z);
         _timer += BobSpeed * movementSpeed * Time.deltaTime;
         _lastPos = transform.position;
-
-
     }
 }

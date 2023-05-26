@@ -27,8 +27,8 @@ public class MovementController : MonoBehaviour
 
     private void GetMovementAxis()
     {
-        var horizontalMovement = Input.GetAxis("Horizontal");
-        var verticalMovement = Input.GetAxis("Vertical");
+        var horizontalMovement = InputController.Instance.HorizontalInput;
+        var verticalMovement = InputController.Instance.VerticalInput;
         _movementDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
         _movementDirection.Normalize();
     }
