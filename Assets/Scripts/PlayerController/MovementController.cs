@@ -8,8 +8,12 @@ public class MovementController : MonoBehaviour
 
     private Vector3 _calculatedVelocity;
 
+    private GroundChecker _groundChecker;
+
     private void Start()
     {
+        _groundChecker = GetComponentInChildren<GroundChecker>();
+        InputController.JumpButton += PreformJump;
         _playerStats = GetComponent<PlayerStats>();
         _playerRigidbody = GetComponent<Rigidbody>();
 
@@ -41,5 +45,16 @@ public class MovementController : MonoBehaviour
             _playerRigidbody.velocity.y,
             _movementDirection.z * _playerStats.MovementSpeed
         );
+    }
+    private void PreformJump()
+    {
+        if(!_groundChecker.IsGrounded())
+            return;
+            
+       _playerRigidbody.AddForce((new Vector3(InputController.MovementAxis.x, 0, InputController.MovementAxis.y) + Vector3.up) * _playerStats.JumpForce, ForceMode.Impulse);
+    }
+    void OnDestroy()
+    {
+        InputController.JumpButton -= PreformJump;
     }
 }

@@ -2042,7 +2042,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh57810
+  m_Name: pb_Mesh29708
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2548,28 +2548,14 @@ GameObject:
   - component: {fileID: 893328882}
   - component: {fileID: 893328881}
   - component: {fileID: 893328880}
-  - component: {fileID: 893328879}
-  m_Layer: 0
+  - component: {fileID: 893328884}
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &893328879
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893328878}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 797416095}
 --- !u!33 &893328880
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -3763,6 +3749,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &893328884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893328878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.000004, y: 1.1413956, z: 16.000004}
+  m_Center: {x: 0.4999981, y: -0.570696, z: 3}
 --- !u!1 &969441344
 GameObject:
   m_ObjectHideFlags: 0
@@ -6041,7 +6040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2090519088}
   _cameraOffset: {x: 0, y: 0.5, z: 0}
-  SmoothTime: 10
+  SmoothTime: 15
 --- !u!4 &2090519088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
@@ -6124,10 +6123,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5484694383019221418, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8504606775282404134, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: _radius
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 8504606775282404134, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: _mask.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259239, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259258, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
@@ -6204,5 +6223,10 @@ PrefabInstance:
       propertyPath: _cameraHolder
       value: 
       objectReference: {fileID: 2059291811}
+    - target: {fileID: 9080110479949259263, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: JumpForce
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de59608855d42034abfa1f27ca841da4, type: 3}
