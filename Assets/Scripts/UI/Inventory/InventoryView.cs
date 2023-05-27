@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class InventoryView : MonoBehaviour
     {
         _prevSlot = _content.GetChild(_selectedIndex).GetComponent<RectTransform>();
         _prevSlot.GetComponent<Image>().color = Color.red;
+        _prevSlot.DOScale(1.1f, 0.5f);
         InputController.EButton += IncrementIndex;
         InputController.QButton += DecrementIndex;
 
@@ -24,13 +26,18 @@ public class InventoryView : MonoBehaviour
     }
     private void DecrementIndex()
     {
-        _selectedIndex = (_selectedIndex - 1) % _content.childCount;
-        if(_selectedIndex < 0) _selectedIndex = _content.childCount - 1;
-        ScrollToNextSlot();
+        ChangeIndex(-1);
     }
+
     private void IncrementIndex()
     {
-        _selectedIndex = (_selectedIndex + 1) % _content.childCount;
+        ChangeIndex(1);
+    }
+
+    private void ChangeIndex(int increment)
+    {
+        _selectedIndex = (_selectedIndex + increment) % _content.childCount;
+        if(_selectedIndex < 0) _selectedIndex = _content.childCount - 1;
         ScrollToNextSlot();
     }
     public void ScrollToNextSlot()
@@ -38,10 +45,12 @@ public class InventoryView : MonoBehaviour
         if(_prevSlot != null)
         {
             _prevSlot.GetComponent<Image>().color = Color.black;
+            _prevSlot.DOScale(1f, 0.5f);
         }
         
         RectTransform slotTransform = _content.GetChild(_selectedIndex).GetComponent<RectTransform>();
         slotTransform.GetComponent<Image>().color = Color.red;
+        slotTransform.DOScale(1.1f, 0.5f);
 
         _prevSlot = slotTransform;
     }
