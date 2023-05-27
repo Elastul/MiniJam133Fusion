@@ -33,7 +33,6 @@ public class InteractionInput : MonoBehaviour
                 actor =  hit.collider.GetComponent<StickableActor>();
                 _hitPoint = hit.point;
                 _hitNormal = hit.normal;
-                Debug.Log(_hitNormal);
             }
             
             interactable = hit.collider.GetComponent<IInteractable>() == null ? null : hit.collider.GetComponent<IInteractable>();

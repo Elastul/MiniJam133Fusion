@@ -17,6 +17,7 @@ public class DoubleLinkedList
             tail.nextNode = node;
             tail = node;
         }
+        node.Index = count;
         count++;
     }
 
@@ -26,8 +27,10 @@ public class DoubleLinkedList
         {            
             ListNode prevNode = node.prevNode;
             ListNode nextNode = node.nextNode;
+
             node.nextNode = null;
             node.prevNode = null;
+
             if(head == node && tail == node)
             {
                 head = null;
@@ -49,6 +52,7 @@ public class DoubleLinkedList
                 nextNode.prevNode = prevNode;
             }            
             count--;
+            RepairIndexes();
         }
         
     }
@@ -82,6 +86,19 @@ public class DoubleLinkedList
         }
 
         return null;
+    }
+
+    private void RepairIndexes()
+    {
+        if(count > 0)
+        {
+            ListNode tempNode = head;
+            for (int i = 0; i < count; i++)
+            {
+                tempNode.Index = i;
+                tempNode = tempNode.nextNode;
+            }
+        }
     }
 
     public bool InList(ListNode node)

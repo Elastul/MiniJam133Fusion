@@ -7,6 +7,11 @@ public class StickerSwitcher : MonoBehaviour
 {
     public static event Action<BaseStickerClass> StickerSwitch;
     public static event Action CreateSticker;
+    public static event Action<InventoryView.ImageType> NewStickerAdded;
+    public static event Action<int> RemoveSticker;
+    public static event Action<int, int> StickerAmountChanged;
+    public static event Action<int> NextElement;
+    public static event Action<int> PrevElement;
     public BaseStickerClass currSticker;
     public DoubleLinkedList stickerList;
     public ListNode currNode;
@@ -29,21 +34,17 @@ public class StickerSwitcher : MonoBehaviour
         InteractionInput.StickerSwitchRC -= OnStickerCreation;
     }
 
-    void Update()
-    {
-        // if (currNode != null) Debug.Log("Текущая нода: " + currNode.Name + " " + currNode.Amount);
-        // if (currSticker != null) Debug.Log("Текущий стикер: " + currSticker);
-    }
-
     public void OnStickerCreation()
     {
         if(currSticker != null)
         {
             currNode.Amount--;
+            StickerAmountChanged.Invoke(currNode.Index, currNode.Amount);
             if(currNode.Amount <= 0)
             {
                 ListNode tempNextNode = currNode.nextNode;
                 ListNode tempPrevNode = currNode.prevNode;
+                RemoveSticker.Invoke(currNode.Index);
                 stickerList.DeleteNode(currNode);
                 CreateSticker.Invoke();
                 if(tempNextNode != null && stickerList.InList(tempNextNode))
@@ -78,12 +79,14 @@ public class StickerSwitcher : MonoBehaviour
             {
                 if(currNode == stickerList.tail)
                 {
+                    NextElement.Invoke(0);
                     currNode = stickerList.head;
                     currSticker = currNode.Sticker;
                     StickerSwitch.Invoke(currSticker);
                 }
                 else
                 {
+                    NextElement.Invoke(currNode.Index + 1);
                     currNode = currNode.nextNode;
                     currSticker = currNode.Sticker;
                     StickerSwitch.Invoke(currSticker);
@@ -104,12 +107,14 @@ public class StickerSwitcher : MonoBehaviour
             {
                 if(currNode == stickerList.head)
                 {
+                    PrevElement.Invoke(stickerList.tail.Index);
                     currNode = stickerList.tail;
                     currSticker = currNode.Sticker;
                     StickerSwitch.Invoke(currSticker);
                 }
                 else
                 {
+                    PrevElement.Invoke(currNode.Index - 1);
                     currNode = currNode.prevNode;
                     currSticker = currNode.Sticker;
                     StickerSwitch.Invoke(currSticker);
@@ -138,6 +143,7 @@ public class StickerSwitcher : MonoBehaviour
             currNode = foundNode;
             currSticker = sticker;
             StickerSwitch.Invoke(currSticker);
+            StickerAmountChanged.Invoke(currNode.Index, currNode.Amount);
         }
         else
         {
@@ -149,6 +155,20 @@ public class StickerSwitcher : MonoBehaviour
             currNode = node;
             currSticker = sticker;
             StickerSwitch.Invoke(currSticker);
+            InventoryView.ImageType _imageType = InventoryView.ImageType.GRAVITY;
+            switch (currNode.Name)
+            {
+                case "GravitySticker":
+                _imageType = InventoryView.ImageType.GRAVITY;
+                break;
+                case "LockSticker":
+                _imageType = InventoryView.ImageType.LOCK;
+                break;
+                case "MagnetSticker":
+                _imageType = InventoryView.ImageType.MAGNET;
+                break;
+            }
+            NewStickerAdded.Invoke(_imageType);
         }        
     }
 }
