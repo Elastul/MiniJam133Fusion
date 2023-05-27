@@ -1,16 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class RequestEvent : UnityEvent<StickableActor>
-{
-}
 
 public class InteractionInput : MonoBehaviour
 {
-    public RequestEvent requestEvent;
     private StickableActor actor;
     private IInteractable interactable;
     private RaycastHit hit;
@@ -55,7 +51,7 @@ public class InteractionInput : MonoBehaviour
     {
         if(actor != null)
         {
-            requestEvent.Invoke(actor);
+            //RequestCreate?.Invoke(actor);
         }
     }
 }

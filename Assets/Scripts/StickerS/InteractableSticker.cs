@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
-[System.Serializable]
-public class PickupEvent : UnityEvent<BaseStickerClass>
-{
-}
 public class InteractableSticker : MonoBehaviour, IInteractable
 {
     [SerializeField]
     private StickerSO stickerSO;
-    public PickupEvent pickupEvent;
 
     public void OnInteraction()
     {
         BaseStickerClass sticker = AddSticker();
-        pickupEvent.Invoke(sticker);
+        StickerSwitcher.Instance.OnStickerPickup(sticker);
         this.gameObject.SetActive(false);
     }   
 
