@@ -11,7 +11,7 @@ public class InventoryView : MonoBehaviour
     void Start()
     {
         _prevSlot = _content.GetChild(_selectedIndex).GetComponent<RectTransform>();
-        _prevSlot.GetComponent<Image>().color = Color.red;
+        _prevSlot.GetComponent<Image>().color = Color.gray;
         _prevSlot.DOScale(1.1f, 0.5f);
         InputController.EButton += IncrementIndex;
         InputController.QButton += DecrementIndex;
@@ -37,12 +37,12 @@ public class InventoryView : MonoBehaviour
     {
         if(_prevSlot != null)
         {
-            _prevSlot.GetComponent<Image>().color = Color.black;
+            _prevSlot.GetComponent<Image>().color = Color.white;
             _prevSlot.DOScale(1f, 0.5f);
         }
         
         RectTransform slotTransform = _content.GetChild(_selectedIndex).GetComponent<RectTransform>();
-        slotTransform.GetComponent<Image>().color = Color.red;
+        slotTransform.GetComponent<Image>().color = Color.gray;
         slotTransform.DOScale(1.1f, 0.5f);
 
         _prevSlot = slotTransform;
