@@ -17,13 +17,6 @@ public class InventoryView : MonoBehaviour
         InputController.QButton += DecrementIndex;
 
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ScrollToNextSlot();
-        }
-    }
     private void DecrementIndex()
     {
         ChangeIndex(-1);
