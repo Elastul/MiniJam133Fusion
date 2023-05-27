@@ -11,7 +11,7 @@ public class CameraTilt : MonoBehaviour
 
     private void Update()
     {
-        float horizontalInput = InputController.Instance.HorizontalInput;
+        float horizontalInput = InputController.MovementAxis.x;
 
         targetTilt = Mathf.Clamp(-horizontalInput * tiltAngle, -maxTiltAngle, maxTiltAngle);
         float currentTilt = Mathf.LerpAngle(_camera.localEulerAngles.z, targetTilt, tiltSpeed * Time.deltaTime);

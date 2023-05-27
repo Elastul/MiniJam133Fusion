@@ -40,8 +40,8 @@ public class RotationController : MonoBehaviour
 
     void CalculateRotation()
     {
-        m_desiredYaw += InputController.Instance.MousePositionX * sensitivity.x * Time.deltaTime;
-        m_desiredPitch -= InputController.Instance.MousePositionY * sensitivity.y * Time.deltaTime;
+        m_desiredYaw += InputController.MouseAxis.x * sensitivity.x * Time.deltaTime;
+        m_desiredPitch -= InputController.MouseAxis.y * sensitivity.y * Time.deltaTime;
 
         m_desiredPitch = Mathf.Clamp(m_desiredPitch, lookAngleMin, lookAngleMax);
     }

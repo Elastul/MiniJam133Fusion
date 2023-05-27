@@ -3,29 +3,18 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    public static InputController Instance;
+    public static Vector2 MouseAxis;
+    public static Vector2 MovementAxis; 
 
-    public float MousePositionX;
-    public float MousePositionY; 
-    public float HorizontalInput; 
-    public float VerticalInput;
-
-    public event Action EButton;
-    public event Action QButton;
-    public event Action LMBButton;
-    public event Action RMBButton; 
-
-    void Awake()
-    {
-        Instance = this;
-    }
+    public static event Action EButton;
+    public static event Action QButton;
+    public static event Action LMBButton;
+    public static event Action RMBButton;
 
     void Update()
     {
-        MousePositionX = Input.GetAxis("Mouse X");
-        MousePositionY = Input.GetAxis("Mouse Y");
-        HorizontalInput = Input.GetAxis("Horizontal");
-        VerticalInput = Input.GetAxis("Vertical");
+        MouseAxis =  new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        MovementAxis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         if(Input.GetKeyDown(KeyCode.E)) EButton?.Invoke();
         if(Input.GetKeyDown(KeyCode.Q)) QButton?.Invoke();
