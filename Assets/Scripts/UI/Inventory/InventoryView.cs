@@ -6,11 +6,13 @@ public class InventoryView : MonoBehaviour
 {
     private int _selectedIndex = 0;
     RectTransform _prevSlot;
+    private Color _defaultColor;
 
     [SerializeField] private Transform _content;
     void Start()
     {
         _prevSlot = _content.GetChild(_selectedIndex).GetComponent<RectTransform>();
+        _defaultColor = _prevSlot.GetComponent<Image>().color;
         _prevSlot.GetComponent<Image>().color = Color.gray;
         _prevSlot.DOScale(1.1f, 0.5f);
         InputController.EButton += IncrementIndex;
@@ -37,7 +39,7 @@ public class InventoryView : MonoBehaviour
     {
         if(_prevSlot != null)
         {
-            _prevSlot.GetComponent<Image>().color = Color.white;
+            _prevSlot.GetComponent<Image>().color = _defaultColor;
             _prevSlot.DOScale(1f, 0.5f);
         }
         
