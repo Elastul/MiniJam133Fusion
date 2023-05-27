@@ -7,10 +7,26 @@ public class StickerManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> _prefabsDict;
     private BaseStickerClass _currSticker;
+    private StickableActor _currActor;
     private GameObject _chosenPrefab;
-    public void ApplySticker(StickableActor currActor)
+    private Vector3 _hitPoint;
+    private Vector3 _hitNormal;
+    private void OnEnable() 
     {
-        if(_currSticker != null && currActor != null)
+        InteractionInput.StickerRC += OnActorUpdate;
+        StickerSwitcher.StickerSwitch += OnStickerUpdate;
+        StickerSwitcher.CreateSticker += ApplySticker;
+    }
+
+    private void OnDisable() 
+    {
+        InteractionInput.StickerRC -= OnActorUpdate;
+        StickerSwitcher.StickerSwitch -= OnStickerUpdate;
+        StickerSwitcher.CreateSticker -= ApplySticker;        
+    }
+    public void ApplySticker()
+    {
+        if(_currSticker != null && _currActor != null)
         {
             switch (_currSticker.ReturnStickerType())
             {
@@ -34,8 +50,11 @@ public class StickerManager : MonoBehaviour
                     _chosenPrefab = _prefabsDict[4];
                 break;
             }
-            GameObject sticker = Instantiate(_chosenPrefab, currActor.transform.position, Quaternion.Euler(Vector3.zero));
-            sticker.GetComponent<StickerObject>().SetUpSticker(_currSticker, currActor);
+            GameObject sticker = Instantiate(_chosenPrefab, _hitPoint, Quaternion.identity);
+            Quaternion rotation = Quaternion.FromToRotation(sticker.transform.forward, _hitNormal);
+            sticker.transform.rotation = rotation * sticker.transform.rotation;
+            sticker.GetComponent<StickerObject>().SetUpSticker(_currSticker, _currActor);
+            sticker.transform.SetParent(_currActor.transform);
         }
 
     }
@@ -43,5 +62,12 @@ public class StickerManager : MonoBehaviour
     public void OnStickerUpdate(BaseStickerClass sticker)
     {
         _currSticker = sticker;
+    }
+
+    public void OnActorUpdate(StickableActor currActor, Vector3 hitPoint, Vector3 hitNormal)
+    {
+        _currActor = currActor;
+        _hitPoint = hitPoint;
+        _hitNormal = hitNormal;
     }
 }
