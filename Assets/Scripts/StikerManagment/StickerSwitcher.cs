@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
-[System.Serializable]
-public class StickerRequestEvent : UnityEvent<BaseStickerClass>
-{
-}
 public class StickerSwitcher : MonoBehaviour
 {
-    public StickerRequestEvent requestEvent;
-    private BaseStickerClass currSticker;
-    private DoubleLinkedList stickerList;
-    private ListNode currNode;
+    public static event Action<BaseStickerClass> StickerSwitch;
+    public static event Action CreateSticker;
+    public BaseStickerClass currSticker;
+    public DoubleLinkedList stickerList;
+    public ListNode currNode;
+
+    public static StickerSwitcher Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+        stickerList = new DoubleLinkedList();
+        InputController.QButton += PrevSticker;
+        InputController.EButton += NextSticker;
+        InteractionInput.StickerSwitchRC += OnStickerCreation;
+    }
+
+    private void OnDisable() 
+    {
+        InputController.QButton -= PrevSticker;
+        InputController.EButton -= NextSticker;        
+        InteractionInput.StickerSwitchRC -= OnStickerCreation;
+    }
+
+    void Update()
+    {
+        // if (currNode != null) Debug.Log("Текущая нода: " + currNode.Name + " " + currNode.Amount);
+        // if (currSticker != null) Debug.Log("Текущий стикер: " + currSticker);
+    }
 
     public void OnStickerCreation()
     {
@@ -24,6 +45,7 @@ public class StickerSwitcher : MonoBehaviour
                 ListNode tempNextNode = currNode.nextNode;
                 ListNode tempPrevNode = currNode.prevNode;
                 stickerList.DeleteNode(currNode);
+                CreateSticker.Invoke();
                 if(tempNextNode != null && stickerList.InList(tempNextNode))
                 {
                     currNode = tempNextNode;
@@ -39,7 +61,11 @@ public class StickerSwitcher : MonoBehaviour
                     currNode = null;
                     currSticker = null;
                 }
-                requestEvent.Invoke(currSticker);
+                StickerSwitch.Invoke(currSticker);
+            }
+            else
+            {
+                CreateSticker.Invoke();
             }
         }
     }
@@ -48,19 +74,19 @@ public class StickerSwitcher : MonoBehaviour
     {
         if(currNode != null)
         {
-            if(currNode != stickerList.head && currNode != stickerList.tail)
+            if(!(currNode == stickerList.head && currNode == stickerList.tail))
             {
                 if(currNode == stickerList.tail)
                 {
                     currNode = stickerList.head;
+                    currSticker = currNode.Sticker;
+                    StickerSwitch.Invoke(currSticker);
                 }
                 else
                 {
                     currNode = currNode.nextNode;
                     currSticker = currNode.Sticker;
-                    requestEvent.Invoke(currSticker);
-                    Debug.Log("Текущий стикер: " + currSticker);
-                    Debug.Log("Текущая нода: " + currNode.Name + " " + currNode.Amount);
+                    StickerSwitch.Invoke(currSticker);
                 }
             }
         }
@@ -74,19 +100,19 @@ public class StickerSwitcher : MonoBehaviour
     {
         if(currNode != null)
         {
-            if(currNode != stickerList.head && currNode != stickerList.tail)
+            if(!(currNode == stickerList.head && currNode == stickerList.tail))
             {
                 if(currNode == stickerList.head)
                 {
                     currNode = stickerList.tail;
+                    currSticker = currNode.Sticker;
+                    StickerSwitch.Invoke(currSticker);
                 }
                 else
                 {
                     currNode = currNode.prevNode;
                     currSticker = currNode.Sticker;
-                    requestEvent.Invoke(currSticker);
-                    Debug.Log("Текущий стикер: " + currSticker);
-                    Debug.Log("Текущая нода: " + currNode.Name + " " + currNode.Amount);
+                    StickerSwitch.Invoke(currSticker);
                 }
             }
         }
@@ -111,9 +137,7 @@ public class StickerSwitcher : MonoBehaviour
             foundNode.Amount++;
             currNode = foundNode;
             currSticker = sticker;
-            requestEvent.Invoke(currSticker);
-            Debug.Log("Текущий стикер: " + currSticker);
-            Debug.Log("Текущая нода: " + currNode.Name + " " + currNode.Amount);
+            StickerSwitch.Invoke(currSticker);
         }
         else
         {
@@ -124,14 +148,7 @@ public class StickerSwitcher : MonoBehaviour
             stickerList.AddNode(node);
             currNode = node;
             currSticker = sticker;
-            requestEvent.Invoke(currSticker);
-            Debug.Log("Текущий стикер: " + currSticker);
-            Debug.Log("Текущая нода: " + currNode.Name + " " + currNode.Amount);
+            StickerSwitch.Invoke(currSticker);
         }        
-    }
-
-    private void Start() 
-    {
-        stickerList = new DoubleLinkedList();    
     }
 }

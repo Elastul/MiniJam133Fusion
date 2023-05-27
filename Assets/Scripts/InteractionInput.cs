@@ -1,30 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-[System.Serializable]
-public class RequestEvent : UnityEvent<StickableActor>
-{
-}
 
 public class InteractionInput : MonoBehaviour
 {
-    public RequestEvent requestEvent;
+    public static event Action<StickableActor, Vector3, Vector3> StickerRC;
+    public static event Action StickerSwitchRC;
     private StickableActor actor;
     private IInteractable interactable;
     private RaycastHit hit;
+    private Vector3 _hitPoint;
+    private Vector3 _hitNormal;
 
-    private void Update() 
+    private void OnEnable() 
     {
-        if(Input.GetMouseButtonUp(1) && actor != null)
-        {
-            RequestCreation();
-        }
-        if(Input.GetMouseButtonUp(0) && interactable != null)
-        {
-            Interact();
-        }
+        InputController.LMBButton += Interact;
+        InputController.RMBButton += RequestCreation;        
+        _hitPoint = new Vector3();
+        _hitNormal = new Vector3();
     }
 
     private void FixedUpdate() 
@@ -33,7 +28,14 @@ public class InteractionInput : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit))
         {
-            actor = hit.collider.GetComponent<StickableActor>() == null ? null : hit.collider.GetComponent<StickableActor>();
+            if(hit.collider.GetComponent<StickableActor>() != null)
+            {
+                actor =  hit.collider.GetComponent<StickableActor>();
+                _hitPoint = hit.point;
+                _hitNormal = hit.normal;
+                Debug.Log(_hitNormal);
+            }
+            
             interactable = hit.collider.GetComponent<IInteractable>() == null ? null : hit.collider.GetComponent<IInteractable>();
         }
         else
@@ -43,14 +45,26 @@ public class InteractionInput : MonoBehaviour
         }
     }
 
+    private void OnDisable() 
+    {
+        InputController.LMBButton -= Interact;
+        InputController.RMBButton -= RequestCreation;          
+    }
+
     void Interact()
     {
-        interactable.OnInteraction();
+        if(interactable != null)
+        {
+            interactable.OnInteraction();
+        }
     }
 
     void RequestCreation()
     {
-        Debug.Log(actor);
-        requestEvent.Invoke(actor);
+        if(actor != null)
+        {
+            StickerRC.Invoke(actor, _hitPoint, _hitNormal);
+            StickerSwitchRC.Invoke();
+        }
     }
 }
