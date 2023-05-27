@@ -11,6 +11,6 @@ public class MagnetSticker : BaseStickerClass
 
     public override void ApplyProperty(GameObject gameObject)
     {
-        throw new System.NotImplementedException();
+        gameObject.AddComponent<MagnetObject>();
     }
 }

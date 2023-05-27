@@ -8,6 +8,6 @@ public class StickerObject : MonoBehaviour
     public void SetUpSticker(BaseStickerClass sticker, StickableActor actor)
     {
         _sticker = sticker;
-        //_sticker.ApplyProperty(actor.gameObject);
+        _sticker.ApplyProperty(actor.gameObject);
     }
 }
