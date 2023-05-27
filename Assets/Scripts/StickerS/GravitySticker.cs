@@ -11,6 +11,6 @@ public class GravitySticker : BaseStickerClass
 
     public override void ApplyProperty(GameObject gameObject)
     {
-        throw new System.NotImplementedException();
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
     }
 }

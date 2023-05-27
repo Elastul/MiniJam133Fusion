@@ -11,6 +11,6 @@ public class LockSticker : BaseStickerClass
 
     public override void ApplyProperty(GameObject gameObject)
     {
-        throw new System.NotImplementedException();
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 }
