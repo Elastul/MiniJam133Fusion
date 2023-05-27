@@ -10,9 +10,31 @@ public class StickerRequestEvent : UnityEvent<BaseStickerClass>
 public class StickerSwitcher : MonoBehaviour
 {
     public StickerRequestEvent requestEvent;
-    private BaseStickerClass currSticker;
-    private DoubleLinkedList stickerList;
-    private ListNode currNode;
+    public BaseStickerClass currSticker;
+    public DoubleLinkedList stickerList;
+    public ListNode currNode;
+
+    private void OnEnable() 
+    {
+        InputController.QButton += PrevSticker;
+        InputController.EButton += NextSticker;
+    }
+
+    public StickerSwitcher()
+    {
+        stickerList = new DoubleLinkedList();
+    }
+
+    private void OnDisable() 
+    {
+        InputController.QButton -= PrevSticker;
+        InputController.EButton -= NextSticker;        
+    }
+
+    private void Update() 
+    {
+        //Debug.Log("Текущая нода: " + currNode);
+    }
 
     public void OnStickerCreation()
     {
@@ -128,10 +150,5 @@ public class StickerSwitcher : MonoBehaviour
             Debug.Log("Текущий стикер: " + currSticker);
             Debug.Log("Текущая нода: " + currNode.Name + " " + currNode.Amount);
         }        
-    }
-
-    private void Start() 
-    {
-        stickerList = new DoubleLinkedList();    
     }
 }

@@ -15,16 +15,10 @@ public class InteractionInput : MonoBehaviour
     private IInteractable interactable;
     private RaycastHit hit;
 
-    private void Update() 
+    private void OnEnable() 
     {
-        if(Input.GetMouseButtonUp(1) && actor != null)
-        {
-            RequestCreation();
-        }
-        if(Input.GetMouseButtonUp(0) && interactable != null)
-        {
-            Interact();
-        }
+        InputController.LMBButton += Interact;
+        InputController.RMBButton += RequestCreation;        
     }
 
     private void FixedUpdate() 
@@ -43,14 +37,25 @@ public class InteractionInput : MonoBehaviour
         }
     }
 
+    private void OnDisable() 
+    {
+        InputController.LMBButton -= Interact;
+        InputController.RMBButton -= RequestCreation;          
+    }
+
     void Interact()
     {
-        interactable.OnInteraction();
+        if(interactable != null)
+        {
+            interactable.OnInteraction();
+        }
     }
 
     void RequestCreation()
     {
-        Debug.Log(actor);
-        requestEvent.Invoke(actor);
+        if(actor != null)
+        {
+            requestEvent.Invoke(actor);
+        }
     }
 }
