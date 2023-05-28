@@ -75,6 +75,9 @@ public class GrabIt : MonoBehaviour {
 	//Debug
 	LineRenderer m_lineRenderer;
 
+	[SerializeField]
+	private Collider _player;
+
 	
 
 	void Awake()
@@ -83,6 +86,7 @@ public class GrabIt : MonoBehaviour {
 		m_hitPointObject = new GameObject("Point");
 
 		m_lineRenderer = GetComponent<LineRenderer>();
+		
 	}
 
 	
@@ -158,11 +162,15 @@ public class GrabIt : MonoBehaviour {
 
 		m_hitPointObject.transform.position = m_targetPos;
 		m_hitPointObject.transform.LookAt(m_transform);
+		Physics.IgnoreCollision(_player, m_targetRB.gameObject.GetComponent<Collider>(), true);
+		//m_targetRB.GetComponent<Collider>().isTrigger = true;
 				
 	}
 
 	void Reset()
 	{		
+		Physics.IgnoreCollision(_player, m_targetRB.gameObject.GetComponent<Collider>(), false);
+		
 		//Grab Properties	
 		//m_targetRB.useGravity = m_defaultProperties.m_useGravity;
 		m_targetRB.drag = m_defaultProperties.m_drag;

@@ -26,13 +26,17 @@ public class InteractionInput : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, transform.forward);
 
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, 4f))
         {
             if(hit.collider.GetComponent<StickableActor>() != null)
             {
                 actor =  hit.collider.GetComponent<StickableActor>();
                 _hitPoint = hit.point;
                 _hitNormal = hit.normal;
+            }
+            else
+            {
+                actor = null;
             }
             
             interactable = hit.collider.GetComponent<IInteractable>() == null ? null : hit.collider.GetComponent<IInteractable>();

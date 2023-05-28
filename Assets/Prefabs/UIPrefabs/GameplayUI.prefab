@@ -737,6 +737,11 @@ MonoBehaviour:
   _content: {fileID: 4659821426491035380}
   _stickerImagePref: {fileID: 8651183155638791654, guid: 922f445569228314ba74c9fee6fbb869,
     type: 3}
+  _stickerPrefabsList:
+  - {fileID: 8651183155638791654, guid: 65ea3480c8dcd034f9c37f76f4349349, type: 3}
+  - {fileID: 8651183155638791654, guid: 8837d9d2557c97a4287f645f92aa9799, type: 3}
+  - {fileID: 8651183155638791654, guid: 9404d9e57209f8649b05a8bf2d5f918f, type: 3}
+  - {fileID: 8651183155638791654, guid: 8e39ad863b23c7c4bbf90154dbbcb83d, type: 3}
 --- !u!114 &4659821428266034669
 MonoBehaviour:
   m_ObjectHideFlags: 0

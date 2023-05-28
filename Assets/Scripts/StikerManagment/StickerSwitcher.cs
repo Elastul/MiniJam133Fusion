@@ -170,6 +170,9 @@ public class StickerSwitcher : MonoBehaviour
                 case "MagnetSticker":
                 _imageType = InventoryView.ImageType.MAGNET;
                 break;
+                case "FireSticker":
+                _imageType = InventoryView.ImageType.FIRE;
+                break;
             }
             NewStickerAdded.Invoke(_imageType);
         }        

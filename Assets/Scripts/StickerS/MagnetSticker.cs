@@ -14,4 +14,11 @@ public class MagnetSticker : BaseStickerClass
         SoundManager.Instance.RequestSound("Magnet");
         gameObject.AddComponent<MagnetObject>();
     }
+
+    public override void RevertProperty(GameObject gameObject)
+    {
+        MagnetObject _magnetComponent;
+        _magnetComponent = gameObject.GetComponent<MagnetObject>();
+        Object.Destroy(_magnetComponent);
+    }
 }

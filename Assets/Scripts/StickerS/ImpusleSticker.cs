@@ -13,4 +13,9 @@ public class ImpulseSticker : BaseStickerClass
     {
         throw new System.NotImplementedException();
     }
+
+    public override void RevertProperty(GameObject gameObject)
+    {
+        throw new System.NotImplementedException();
+    }
 }

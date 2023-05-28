@@ -10,19 +10,19 @@ public class MenuController : MonoBehaviour
     [SerializeField] private CanvasGroup _menuCanvasGroup;
     [SerializeField] private CanvasGroup _gameplayCanvasGroup;
 
-    [SerializeField] private Slider _generalVolumeSlider;
-    [SerializeField] private Slider _musicVolumeSlider;
-    [SerializeField] private Slider _senseYSlider;
-    [SerializeField] private Slider _senseXSlider;
+    [SerializeField] protected Slider _generalVolumeSlider;
+    [SerializeField] protected Slider _musicVolumeSlider;
+    [SerializeField] protected Slider _senseYSlider;
+    [SerializeField] protected Slider _senseXSlider;
 
     [SerializeField] private RotationController _rotationController;
 
-    [SerializeField] private AudioSource _musicSource;
+    protected AudioSource _musicSource;
     
 
     private bool _isActiveMenu = false;
 
-    void Awake()
+    protected virtual void Awake()
     {
         _generalVolumeSlider.onValueChanged.AddListener(OnGeneralVolumeSliderChange);
         _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChange);
@@ -37,10 +37,10 @@ public class MenuController : MonoBehaviour
         _senseXSlider.DOValue(PlayerPrefs.GetFloat("SensetivityX", 200f), 0.01f);
     }
 
-    void  OnEnable()
+    void OnEnable()
     {
+        _musicSource = FindObjectOfType<MusicManager>().GetComponent<AudioSource>();
         InputController.ESCButton += OnMenuStateChanged;
-        AudioListener.volume = 0;
     }
 
     public void OnMenuStateChanged()
@@ -117,13 +117,13 @@ public class MenuController : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", value);
     }
 
-    public void OnSenseXSliderChange(float value)
+    public virtual void OnSenseXSliderChange(float value)
     {
         _rotationController.Sensitivity.x = value;
         PlayerPrefs.SetFloat("SensetivityX", value);
 
     }
-    public void OnSenseYSliderChange(float value)
+    public virtual void OnSenseYSliderChange(float value)
     {
         _rotationController.Sensitivity.y = value;
 
