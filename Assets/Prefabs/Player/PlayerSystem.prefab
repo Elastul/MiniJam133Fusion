@@ -188,7 +188,7 @@ MonoBehaviour:
   m_rotateYawNegKey: 0
   m_grabSpeed: 7
   m_grabMinDistance: 1
-  m_grabMaxDistance: 2
+  m_grabMaxDistance: 4
   m_scrollWheelSpeed: 5
   m_angularSpeed: 300
   m_impulseMagnitude: 10
