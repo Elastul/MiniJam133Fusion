@@ -22,6 +22,7 @@ public class InventoryView : MonoBehaviour
 
     [SerializeField] private Transform _content;
     [SerializeField] private RectTransform _stickerImagePref;
+    [SerializeField] private List<RectTransform> _stickerPrefabsList;
     void Start()
     {
         _stickerUIElemList = new List<RectTransform>();
@@ -39,12 +40,15 @@ public class InventoryView : MonoBehaviour
         {
             case ImageType.GRAVITY:
             //Change Prefab Img To Gravity
+            _stickerImagePref = _stickerPrefabsList[0];
             break;
             case ImageType.LOCK:
             //Change Prefab Img To Lock
+            _stickerImagePref = _stickerPrefabsList[1];
             break;
             case ImageType.MAGNET:
             //Change Prefab Img To Magnet
+            _stickerImagePref = _stickerPrefabsList[2];
             break;
         }
         SpawnStickerUI(_stickerImagePref);
