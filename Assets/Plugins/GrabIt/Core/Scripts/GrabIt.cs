@@ -108,7 +108,7 @@ public class GrabIt : MonoBehaviour {
 			if( Input.GetMouseButtonUp(0) ){				
 				Reset();
 				m_grabbing = false;
-			}else if ( Input.GetMouseButtonDown(1) ){
+			}else if ( Input.GetKeyDown(KeyCode.F) ){
 				m_applyImpulse = true;
 			}
 
