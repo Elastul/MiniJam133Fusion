@@ -13,5 +13,6 @@ public class GravitySticker : BaseStickerClass
     {
         SoundManager.Instance.RequestSound("Gravity");
         gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().mass = 1;
     }
 }
