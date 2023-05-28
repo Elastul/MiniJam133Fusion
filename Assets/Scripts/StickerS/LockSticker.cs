@@ -11,6 +11,7 @@ public class LockSticker : BaseStickerClass
 
     public override void ApplyProperty(GameObject gameObject)
     {
+        SoundManager.Instance.RequestSound("Lock");
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 }

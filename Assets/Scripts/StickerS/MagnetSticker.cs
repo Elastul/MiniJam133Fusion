@@ -11,6 +11,7 @@ public class MagnetSticker : BaseStickerClass
 
     public override void ApplyProperty(GameObject gameObject)
     {
+        SoundManager.Instance.RequestSound("Magnet");
         gameObject.AddComponent<MagnetObject>();
     }
 }
