@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -58,6 +59,11 @@ public class MenuController : MonoBehaviour
     {
         var value = _isActiveMenu ? 0 : 1;
         _gameplayCanvasGroup.DOFade(value, 0f);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     public void ExitGame()

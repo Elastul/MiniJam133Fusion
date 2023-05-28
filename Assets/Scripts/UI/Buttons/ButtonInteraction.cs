@@ -8,7 +8,7 @@ public class ButtonInteraction : MonoBehaviour, IPointerEnterHandler, IPointerEx
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.DOScale(1.3f, 0.3f);
+        transform.DOScale(1.1f, 0.3f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
