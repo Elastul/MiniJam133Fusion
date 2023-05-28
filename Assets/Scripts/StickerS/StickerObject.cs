@@ -10,4 +10,10 @@ public class StickerObject : MonoBehaviour
         _sticker = sticker;
         _sticker.ApplyProperty(actor.gameObject);
     }
+
+    public void DetachSticker()
+    {
+        _sticker.RevertProperty();
+        Destroy(this.gameObject, .5f);
+    }
 }

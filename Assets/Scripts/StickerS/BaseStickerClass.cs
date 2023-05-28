@@ -42,4 +42,5 @@ public abstract class BaseStickerClass
     }
 
     public abstract void ApplyProperty(GameObject gameObject);
+    public abstract void RevertProperty();
 }

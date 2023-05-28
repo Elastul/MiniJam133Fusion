@@ -15,7 +15,8 @@ public class InventoryView : MonoBehaviour
     {
         GRAVITY,
         MAGNET,
-        LOCK
+        LOCK,
+        FIRE
     }
 
     private ImageType _imageType;
@@ -49,6 +50,10 @@ public class InventoryView : MonoBehaviour
             case ImageType.MAGNET:
             //Change Prefab Img To Magnet
             _stickerImagePref = _stickerPrefabsList[2];
+            break;
+            case ImageType.FIRE:
+            //Change Prefab Img To Fire
+            _stickerImagePref = _stickerPrefabsList[3];
             break;
         }
         SpawnStickerUI(_stickerImagePref);

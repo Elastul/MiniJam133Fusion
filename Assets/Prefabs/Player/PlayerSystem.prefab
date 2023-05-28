@@ -189,7 +189,7 @@ MonoBehaviour:
   m_rotateYawNegKey: 0
   m_grabSpeed: 7
   m_grabMinDistance: 1
-  m_grabMaxDistance: 2
+  m_grabMaxDistance: 3
   m_scrollWheelSpeed: 5
   m_angularSpeed: 300
   m_impulseMagnitude: 10
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_collisionMask:
     serializedVersion: 2
     m_Bits: 64
+  _player: {fileID: 5279501867055596446}
 --- !u!120 &5279501865698122848
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -609,7 +610,7 @@ PrefabInstance:
     - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
       propertyPath: _stickerPrefabsList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
@@ -628,6 +629,12 @@ PrefabInstance:
       propertyPath: _stickerPrefabsList.Array.data[2]
       value: 
       objectReference: {fileID: 8651183155638791654, guid: 9404d9e57209f8649b05a8bf2d5f918f,
+        type: 3}
+    - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: _stickerPrefabsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 8651183155638791654, guid: 8e39ad863b23c7c4bbf90154dbbcb83d,
         type: 3}
     - target: {fileID: 6889186120611259466, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
@@ -950,6 +957,12 @@ MonoBehaviour:
 --- !u!4 &5279501867055596444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
+    type: 3}
+  m_PrefabInstance: {fileID: 3983300445613400679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &5279501867055596446 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 9080110479949259257, guid: de59608855d42034abfa1f27ca841da4,
     type: 3}
   m_PrefabInstance: {fileID: 3983300445613400679}
   m_PrefabAsset: {fileID: 0}
