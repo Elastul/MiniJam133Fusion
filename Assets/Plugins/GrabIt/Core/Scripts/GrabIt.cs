@@ -145,9 +145,9 @@ public class GrabIt : MonoBehaviour {
 		m_defaultProperties.m_constraints = m_targetRB.constraints;
 
 		//Grab Properties	
-		m_targetRB.useGravity = m_grabProperties.m_useGravity;
-		m_targetRB.drag = m_grabProperties.m_drag;
-		m_targetRB.angularDrag = m_grabProperties.m_angularDrag;
+		//m_targetRB.useGravity = m_grabProperties.m_useGravity;
+		//m_targetRB.drag = m_grabProperties.m_drag;
+		//m_targetRB.angularDrag = m_grabProperties.m_angularDrag;
 		m_targetRB.constraints = m_isHingeJoint? RigidbodyConstraints.None : m_grabProperties.m_constraints;
 		
 		
@@ -185,7 +185,10 @@ public class GrabIt : MonoBehaviour {
 		if(m_isHingeJoint)
 			m_targetRB.AddForceAtPosition( m_grabSpeed  * dif * 100 , hitPointPos , ForceMode.Force);
 		else
-			m_targetRB.velocity = m_grabSpeed * dif;		
+		{
+			float massDiff = m_grabSpeed - m_targetRB.mass > 0 ? m_grabSpeed - m_targetRB.mass : 0;
+			m_targetRB.velocity = massDiff * dif;		
+		}
 
 		
 		if(m_lineRenderer != null){
@@ -219,8 +222,10 @@ public class GrabIt : MonoBehaviour {
 		
 		Grab();		
 
-		if(m_applyImpulse){
-			m_targetRB.velocity = m_transform.forward * m_impulseMagnitude;
+		if(m_applyImpulse)
+		{
+			float massDiff = m_impulseMagnitude - m_targetRB.mass > 0 ? m_impulseMagnitude - m_targetRB.mass : 0;
+			m_targetRB.velocity = m_transform.forward * massDiff;
 			Reset();
 			m_grabbing = false;
 			m_applyImpulse = false;
