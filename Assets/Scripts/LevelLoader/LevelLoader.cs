@@ -10,6 +10,7 @@ public class LevelLoader : MonoBehaviour
     {
         if(other.gameObject.layer.Equals(LayerMask.NameToLayer("Player")))
         {
+            PlayerPrefs.SetInt("Level", _nextLevel);
             LoadLevel();
         }
     }
