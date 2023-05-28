@@ -12,5 +12,6 @@ public class GravitySticker : BaseStickerClass
     public override void ApplyProperty(GameObject gameObject)
     {
         gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().mass = 1;
     }
 }
