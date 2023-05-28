@@ -15,6 +15,11 @@ public class InputController : MonoBehaviour
     public static event Action JumpButton;
     public static event Action ESCButton;
 
+    void Awake()
+    {
+        BlockAxis = false;
+    }
+
     void Update()
     {
         
