@@ -1053,6 +1053,18 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259236, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -7434527051930761011, guid: 9a487ab991a53ae4b8f24aa1eb5c8733,
+        type: 3}
+    - target: {fileID: 9080110479949259239, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 9080110479949259239, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_Name

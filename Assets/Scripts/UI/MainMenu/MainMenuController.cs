@@ -8,6 +8,7 @@ public class MainMenuController : MenuController
     [SerializeField] Button _continueButton;
     protected override void Awake()
     {
+        Cursor.visible = true;
         base.Awake();
         _level = PlayerPrefs.GetInt("Level", 1);
         if(_level < 2)
@@ -31,6 +32,7 @@ public class MainMenuController : MenuController
 
     public void LoadLevel()
     {
+        Cursor.visible = false;
         SceneManager.LoadSceneAsync(_level);
     }
 
