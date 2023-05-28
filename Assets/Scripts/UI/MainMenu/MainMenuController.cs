@@ -29,7 +29,7 @@ public class MainMenuController : MenuController
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene(_level);
+        SceneManager.LoadSceneAsync(_level);
     }
 
     public override void OnSenseXSliderChange(float value)
