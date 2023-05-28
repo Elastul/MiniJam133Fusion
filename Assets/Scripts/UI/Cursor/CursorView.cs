@@ -10,11 +10,11 @@ public class CursorView : MonoBehaviour
         _cursorImage = GetComponent<Image>();
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) OnInteractableSpotted();
-        if(Input.GetKeyDown(KeyCode.Alpha2)) OnInteractableLost();
-    }
+    // void Update()
+    // {
+    //     if(Input.GetKeyDown(KeyCode.Alpha1)) OnInteractableSpotted();
+    //     if(Input.GetKeyDown(KeyCode.Alpha2)) OnInteractableLost();
+    // }
     public void OnInteractableSpotted()
     {
         _cursorImage.transform.DOScale(1, 0.5f).SetEase(Ease.OutElastic);
