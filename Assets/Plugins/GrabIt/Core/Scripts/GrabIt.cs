@@ -164,7 +164,7 @@ public class GrabIt : MonoBehaviour {
 	void Reset()
 	{		
 		//Grab Properties	
-		m_targetRB.useGravity = m_defaultProperties.m_useGravity;
+		//m_targetRB.useGravity = m_defaultProperties.m_useGravity;
 		m_targetRB.drag = m_defaultProperties.m_drag;
 		m_targetRB.angularDrag = m_defaultProperties.m_angularDrag;
 		m_targetRB.constraints = m_defaultProperties.m_constraints;
