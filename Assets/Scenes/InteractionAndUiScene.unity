@@ -1048,6 +1048,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 474c86bc69ccbcc47ba61ede6a745213, type: 3}
+--- !u!82 &440115522 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1164739001554067858, guid: 02a543d39babb074598ad82cadfff116,
+    type: 3}
+  m_PrefabInstance: {fileID: 554325853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &554325853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1059,6 +1065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MusicManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164739001554067858, guid: 02a543d39babb074598ad82cadfff116,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1164739001554067859, guid: 02a543d39babb074598ad82cadfff116,
         type: 3}
@@ -1405,7 +1416,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -2753,6 +2764,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1294649956}
+--- !u!114 &1588714136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6724360558222767763, guid: d16705cc2fe3baa49a70524122c48b65,
+    type: 3}
+  m_PrefabInstance: {fileID: 6889186120055142183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &1656386905
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2815,6 +2838,18 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_PVRTiledBaking: 0
+--- !u!114 &1754608859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5943687747388914583, guid: d16705cc2fe3baa49a70524122c48b65,
+    type: 3}
+  m_PrefabInstance: {fileID: 6889186120055142183}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1900885958
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,9 +3515,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6889186120611259466, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
+      propertyPath: _musicSource
+      value: 
+      objectReference: {fileID: 440115522}
+    - target: {fileID: 6889186120611259466, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: _musicVolumeSlider
+      value: 
+      objectReference: {fileID: 1754608859}
+    - target: {fileID: 6889186120611259466, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
       propertyPath: _depthOfFieldVolume
       value: 
       objectReference: {fileID: 141329253}
+    - target: {fileID: 6889186120611259466, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: _generalVolumeSlider
+      value: 
+      objectReference: {fileID: 1588714136}
     - target: {fileID: 6889186120611259467, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3612,6 +3662,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8807709623748094402, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259239, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_Name

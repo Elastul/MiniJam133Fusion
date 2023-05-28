@@ -2,17 +2,34 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] Volume _depthOfFieldVolume;
-    [SerializeField] CanvasGroup _menuCanvasGroup;
-    [SerializeField] CanvasGroup _gameplayCanvasGroup;
-    // Start is called before the first frame update
+    [SerializeField] private Volume _depthOfFieldVolume;
+    [SerializeField] private CanvasGroup _menuCanvasGroup;
+    [SerializeField] private CanvasGroup _gameplayCanvasGroup;
+
+    [SerializeField] private Slider _generalVolumeSlider;
+    [SerializeField] private Slider _musicVolumeSlider;
+
+    [SerializeField] private AudioSource _musicSource;
+    
+
     private bool _isActiveMenu = false;
+
+    void Awake()
+    {
+        _generalVolumeSlider.onValueChanged.AddListener(OnGeneralVolumeSliderChange);
+        _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChange);
+        _musicVolumeSlider.DOValue(PlayerPrefs.GetFloat("MusicVolume", 0.5f), 0.01f);
+        _generalVolumeSlider.DOValue(PlayerPrefs.GetFloat("GeneralVolume", 0.5f), 0.01f);
+    }
+
     void  OnEnable()
     {
         InputController.ESCButton += OnMenuStateChanged;
+        AudioListener.volume = 0;
     }
 
     public void OnMenuStateChanged()
@@ -73,6 +90,18 @@ public class MenuController : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    public void OnGeneralVolumeSliderChange(float value)
+    {
+        AudioListener.volume = value;
+        PlayerPrefs.SetFloat("GeneralVolume", value);
+
+    }
+    public void OnMusicVolumeSliderChange(float value)
+    {
+        _musicSource.volume = value;
+        PlayerPrefs.SetFloat("MusicVolume", value);
     }
 
     void OnDisable()
