@@ -51,11 +51,13 @@ public class StickerSwitcher : MonoBehaviour
                 {
                     currNode = tempNextNode;
                     currSticker = currNode.Sticker;
+                    NextElement.Invoke(currNode.Index);
                 }
                 else if(tempPrevNode != null && stickerList.InList(tempPrevNode))
                 {
                     currNode = tempPrevNode;
                     currSticker = currNode.Sticker;
+                    NextElement.Invoke(currNode.Index);
                 }
                 else
                 {
@@ -144,6 +146,7 @@ public class StickerSwitcher : MonoBehaviour
             currSticker = sticker;
             StickerSwitch.Invoke(currSticker);
             StickerAmountChanged.Invoke(currNode.Index, currNode.Amount);
+            NextElement.Invoke(currNode.Index);
         }
         else
         {

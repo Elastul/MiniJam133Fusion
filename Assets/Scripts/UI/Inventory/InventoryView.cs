@@ -56,18 +56,14 @@ public class InventoryView : MonoBehaviour
         {
             _stickerUIElemList.RemoveAt(index);
             Destroy(_prevSlot.gameObject);
-            if(_content.childCount > 0)
-            {
-                ChangeIndex(index);
-            }
         }
     }
 
     private void ChangeAmountText(int index, int amount)
     {
         _stickerUIElemList[index].GetComponentInChildren<TMP_Text>().SetText("X"+amount);
-        _stickerUIElemList[index].GetComponent<Image>().color = Color.grey;
         if(_prevSlot != null) _prevSlot.GetComponent<Image>().color = _defaultColor;     
+        _stickerUIElemList[index].GetComponent<Image>().color = Color.grey;
     }
 
     private void SpawnStickerUI(RectTransform stickerUI)
