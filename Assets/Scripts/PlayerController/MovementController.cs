@@ -9,6 +9,8 @@ public class MovementController : MonoBehaviour
     private Vector3 _calculatedVelocity;
 
     private GroundChecker _groundChecker;
+    [SerializeField] float _wallCheckDistance;
+    [SerializeField] private LayerMask _wallLayerMask;
 
     private void Start()
     {
@@ -33,9 +35,24 @@ public class MovementController : MonoBehaviour
     {
         var horizontalMovement = InputController.MovementAxis.x;
         var verticalMovement = InputController.MovementAxis.y;
+
         
+
+        if(Physics.Raycast(transform.position, transform.forward * verticalMovement + transform.right * horizontalMovement, out var raycastHit, _wallCheckDistance, _wallLayerMask))
+        {   
+            Vector3 hitDirection = raycastHit.point - transform.position;
+            float angle = Vector3.Angle(raycastHit.normal, hitDirection);
+            if(angle > 70)
+            {
+                verticalMovement = 0;
+                horizontalMovement = 0;
+            }
+            
+        }
         _movementDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
         _movementDirection.Normalize();
+        
+        
     }
     private void CalculateCurrentVelocity()
     {

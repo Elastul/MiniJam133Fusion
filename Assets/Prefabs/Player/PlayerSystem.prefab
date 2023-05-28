@@ -843,6 +843,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5279501865466366603}
     m_Modifications:
+    - target: {fileID: 2511521820249476624, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686183993252579681, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: _radius
+      value: 0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 8807709623748094402, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_Volume
@@ -852,6 +862,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259257, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}

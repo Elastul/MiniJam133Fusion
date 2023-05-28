@@ -38,6 +38,7 @@ public class MagnetObject : MonoBehaviour
 		Rigidbody rbToAttract = objToAttract.rb;
 
 		Vector3 direction = rb.position - rbToAttract.position;
+		
 		float distance = direction.magnitude;
 
 		if (distance == 0f)
