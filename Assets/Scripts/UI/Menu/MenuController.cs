@@ -12,6 +12,10 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private Slider _generalVolumeSlider;
     [SerializeField] private Slider _musicVolumeSlider;
+    [SerializeField] private Slider _senseYSlider;
+    [SerializeField] private Slider _senseXSlider;
+
+    [SerializeField] private RotationController _rotationController;
 
     [SerializeField] private AudioSource _musicSource;
     
@@ -22,8 +26,15 @@ public class MenuController : MonoBehaviour
     {
         _generalVolumeSlider.onValueChanged.AddListener(OnGeneralVolumeSliderChange);
         _musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChange);
+
+        _senseYSlider.onValueChanged.AddListener(OnSenseYSliderChange);
+        _senseXSlider.onValueChanged.AddListener(OnSenseXSliderChange);
+
         _musicVolumeSlider.DOValue(PlayerPrefs.GetFloat("MusicVolume", 0.5f), 0.01f);
         _generalVolumeSlider.DOValue(PlayerPrefs.GetFloat("GeneralVolume", 0.5f), 0.01f);
+
+        _senseYSlider.DOValue(PlayerPrefs.GetFloat("SensetivityY", 200f), 0.01f);
+        _senseXSlider.DOValue(PlayerPrefs.GetFloat("SensetivityX", 200f), 0.01f);
     }
 
     void  OnEnable()
@@ -104,6 +115,19 @@ public class MenuController : MonoBehaviour
     {
         _musicSource.volume = value;
         PlayerPrefs.SetFloat("MusicVolume", value);
+    }
+
+    public void OnSenseXSliderChange(float value)
+    {
+        _rotationController.Sensitivity.x = value;
+        PlayerPrefs.SetFloat("SensetivityX", value);
+
+    }
+    public void OnSenseYSliderChange(float value)
+    {
+        _rotationController.Sensitivity.y = value;
+
+        PlayerPrefs.SetFloat("SensetivityY", value);
     }
 
     void OnDisable()

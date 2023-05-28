@@ -6,7 +6,7 @@ public class RotationController : MonoBehaviour
 
     #region Settings
     [Space, Header("Look Settings")]
-    [SerializeField] private Vector2 sensitivity = Vector2.zero;
+    public Vector2 Sensitivity = Vector2.zero;
     [SerializeField] private Vector2 smoothAmount = Vector2.zero;
     [SerializeField][Range(-90, 90)] private int lookAngleMin = -90;
     [SerializeField][Range(-90, 90)] private int lookAngleMax = 90;
@@ -40,8 +40,8 @@ public class RotationController : MonoBehaviour
 
     void CalculateRotation()
     {
-        m_desiredYaw += InputController.MouseAxis.x * sensitivity.x * Time.deltaTime;
-        m_desiredPitch -= InputController.MouseAxis.y * sensitivity.y * Time.deltaTime;
+        m_desiredYaw += InputController.MouseAxis.x * Sensitivity.x * Time.deltaTime;
+        m_desiredPitch -= InputController.MouseAxis.y * Sensitivity.y * Time.deltaTime;
 
         m_desiredPitch = Mathf.Clamp(m_desiredPitch, lookAngleMin, lookAngleMax);
     }
