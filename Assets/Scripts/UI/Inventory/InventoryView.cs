@@ -21,12 +21,13 @@ public class InventoryView : MonoBehaviour
 
     private ImageType _imageType;
 
-    [SerializeField] private Transform _content;
+    [SerializeField] private RectTransform _content;
     [SerializeField] private RectTransform _stickerImagePref;
-    [SerializeField] private List<RectTransform> _stickerPrefabsList;
+    [SerializeField] private List<RectTransform> _stickerPrefabsList = new List<RectTransform>();
     void Start()
     {
         _stickerUIElemList = new List<RectTransform>();
+        _content = this.GetComponentInChildren<HorizontalLayoutGroup>().GetComponent<RectTransform>();
         StickerSwitcher.NewStickerAdded += AddImageType;
         StickerSwitcher.StickerAmountChanged += ChangeAmountText;
         StickerSwitcher.RemoveSticker += DeleteStickerUI;
@@ -112,5 +113,14 @@ public class InventoryView : MonoBehaviour
         slotTransform.DOScale(1.1f, 0.5f);
 
         _prevSlot = slotTransform;
+    }
+
+    private void OnDestroy() 
+    {
+        StickerSwitcher.NewStickerAdded -= AddImageType;
+        StickerSwitcher.StickerAmountChanged -= ChangeAmountText;
+        StickerSwitcher.RemoveSticker -= DeleteStickerUI;
+        StickerSwitcher.NextElement -= ChangeIndex;
+        StickerSwitcher.PrevElement -= ChangeIndex;
     }
 }

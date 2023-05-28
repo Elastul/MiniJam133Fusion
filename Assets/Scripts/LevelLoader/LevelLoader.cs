@@ -15,6 +15,6 @@ public class LevelLoader : MonoBehaviour
     }
     private void LoadLevel()
     {
-        SceneManager.LoadScene(_nextLevel);
+        SceneManager.LoadSceneAsync(_nextLevel);
     }
 }
