@@ -9,6 +9,7 @@ public class ButtonInteraction : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.DOScale(1.1f, 0.3f);
+        SoundManager.Instance.RequestSound("UISound");
     }
 
     public void OnPointerExit(PointerEventData eventData)
