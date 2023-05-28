@@ -749,7 +749,7 @@ PrefabInstance:
     - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
       propertyPath: _stickerPrefabsList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
