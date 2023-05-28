@@ -11,6 +11,7 @@ public class GravitySticker : BaseStickerClass
 
     public override void ApplyProperty(GameObject gameObject)
     {
+        SoundManager.Instance.RequestSound("Gravity");
         gameObject.GetComponent<Rigidbody>().useGravity = false;
     }
 }
