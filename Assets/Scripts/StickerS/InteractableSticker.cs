@@ -9,6 +9,7 @@ public class InteractableSticker : MonoBehaviour, IInteractable
 
     public void OnInteraction()
     {
+        SoundManager.Instance.RequestSound("Paper");
         BaseStickerClass sticker = AddSticker();
         StickerSwitcher.Instance.OnStickerPickup(sticker);
         this.gameObject.SetActive(false);
