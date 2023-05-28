@@ -26,10 +26,10 @@ public class FireSticker : BaseStickerClass
         //     Object.Destroy(sticker.gameObject, 0.5f);
         // }
         //destroy this object with timer
-        RevertProperty();
+        //RevertProperty();
     }
 
-    public override void RevertProperty()
+    public override void RevertProperty(GameObject gameObject)
     {
         
     }

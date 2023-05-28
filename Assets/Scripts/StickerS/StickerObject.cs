@@ -13,7 +13,7 @@ public class StickerObject : MonoBehaviour
 
     public void DetachSticker()
     {
-        _sticker.RevertProperty();
+        _sticker.RevertProperty(this.transform.parent.gameObject);
         Destroy(this.gameObject, .5f);
     }
 }

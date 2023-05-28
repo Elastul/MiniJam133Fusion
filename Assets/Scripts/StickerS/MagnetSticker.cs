@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MagnetSticker : BaseStickerClass
 {
-    private GameObject _gameObjectRef;
     public MagnetSticker()
     {
         Type = StickerType.MAGNET;
@@ -13,14 +12,13 @@ public class MagnetSticker : BaseStickerClass
     public override void ApplyProperty(GameObject gameObject)
     {
         SoundManager.Instance.RequestSound("Magnet");
-        _gameObjectRef = gameObject;
-        _gameObjectRef.AddComponent<MagnetObject>();
+        gameObject.AddComponent<MagnetObject>();
     }
 
-    public override void RevertProperty()
+    public override void RevertProperty(GameObject gameObject)
     {
         MagnetObject _magnetComponent;
-        _magnetComponent = _gameObjectRef.GetComponent<MagnetObject>();
+        _magnetComponent = gameObject.GetComponent<MagnetObject>();
         Object.Destroy(_magnetComponent);
     }
 }
