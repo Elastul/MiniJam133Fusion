@@ -11,6 +11,7 @@ public class WalkingSoundSystem : MonoBehaviour
     private int currentStepIndex = 0;
     private float nextStepTime = 0f;
 
+    [SerializeField] private GroundChecker _groundChecker;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -18,6 +19,9 @@ public class WalkingSoundSystem : MonoBehaviour
 
     private void Update()
     {
+        if(!_groundChecker.IsGrounded())
+            return;
+            
         if (InputController.MovementAxis.magnitude > 0)
         {
             if (Time.time >= nextStepTime)
