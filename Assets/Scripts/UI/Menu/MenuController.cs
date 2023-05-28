@@ -50,6 +50,7 @@ public class MenuController : MonoBehaviour
     }
     private void CloseWindow()
     {
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         var value = _isActiveMenu ? 1 : 0;
         _menuCanvasGroup.DOFade(value, 0f);
@@ -64,6 +65,7 @@ public class MenuController : MonoBehaviour
     {
         InputController.BlockAxis = true;
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         var value = _isActiveMenu ? 1 : 0;
         HideUnhideGameplayUI();
         _depthOfFieldVolume.weight = value;
