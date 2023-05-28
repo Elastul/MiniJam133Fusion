@@ -3,6 +3,7 @@ public class ListNode
     public ListNode nextNode;
     public ListNode prevNode;
     public int Amount;
+    public int Index;
     
     private BaseStickerClass _sticker;
     public BaseStickerClass Sticker 

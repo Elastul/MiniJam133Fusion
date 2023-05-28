@@ -48,22 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickerSO: {fileID: 11400000, guid: bb96d256e3e207847a9ce9874050bf68, type: 2}
-  pickupEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9080110479949259249, guid: de59608855d42034abfa1f27ca841da4,
-          type: 3}
-        m_TargetAssemblyTypeName: StickerSwitcher, Assembly-CSharp
-        m_MethodName: OnStickerPickup
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &-6722291402753611020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -76,7 +60,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.23285882, y: 0.011012549, z: 0.23001698}
-  m_Center: {x: 0.0016430765, y: 0.0013680919, z: -0.0015781075}
+  m_Center: {x: 0.0016430765, y: 0.0013680919, z: 0.09}
 --- !u!54 &-3318909216691436015
 Rigidbody:
   m_ObjectHideFlags: 0
