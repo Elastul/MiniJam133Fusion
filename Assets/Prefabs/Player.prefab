@@ -47,8 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e689d96a147f8947b80659fa54afa04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StepSounds: []
-  StepInterval: 0.5
+  _soundLibrary: {fileID: 11400000, guid: 5506aeed93fdc8c40918d0cdaca18ad4, type: 2}
 --- !u!82 &8271837822986325240
 AudioSource:
   m_ObjectHideFlags: 0
@@ -622,6 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 5
+  JumpForce: 10
 --- !u!114 &9080110479949259261
 MonoBehaviour:
   m_ObjectHideFlags: 0
