@@ -383,10 +383,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepSounds:
-  - {fileID: 8300000, guid: a5701e60ad63fe14382bfca876362b31, type: 3}
-  - {fileID: 8300000, guid: d029184c164d18446a7aa310147a38a6, type: 3}
-  - {fileID: 8300000, guid: a727be9a3804ead438067e7bdf5be5bd, type: 3}
-  - {fileID: 8300000, guid: a1a3c6d5b60fec840be966d60b37c669, type: 3}
+  - {fileID: 8300000, guid: 7b982ed4d266e034eb19fdb9daaf23b9, type: 3}
+  - {fileID: 8300000, guid: bfe856d232d5556498cff0b84a5d0546, type: 3}
+  - {fileID: 8300000, guid: 8df77eb9b34790c4696c44f13204ef3c, type: 3}
+  - {fileID: 8300000, guid: 04bc0841885d80d488d199d74a9aadce, type: 3}
   stepInterval: 0.6
 --- !u!82 &8807709623748094402
 AudioSource:
@@ -400,7 +400,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.14
   m_Pitch: 1
   Loop: 0
   Mute: 0
