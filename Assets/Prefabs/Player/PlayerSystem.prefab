@@ -606,6 +606,29 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: _stickerPrefabsList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: _stickerPrefabsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8651183155638791654, guid: 65ea3480c8dcd034f9c37f76f4349349,
+        type: 3}
+    - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: _stickerPrefabsList.Array.data[1]
+      value: 
+      objectReference: {fileID: 8651183155638791654, guid: 8837d9d2557c97a4287f645f92aa9799,
+        type: 3}
+    - target: {fileID: 6889186119906212584, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: _stickerPrefabsList.Array.data[2]
+      value: 
+      objectReference: {fileID: 8651183155638791654, guid: 9404d9e57209f8649b05a8bf2d5f918f,
+        type: 3}
     - target: {fileID: 6889186120611259466, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
       propertyPath: _musicSource

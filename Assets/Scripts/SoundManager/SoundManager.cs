@@ -29,6 +29,12 @@ public class SoundManager : MonoBehaviour
 
         var newSource = gameObject.AddComponent<AudioSource>();
         AudioSource[] temp = new AudioSource[_audioSources.Length + 1];
+
+        for(int i = 0; i < _audioSources.Length; i++)
+        {
+            temp[i] = _audioSources[i];
+        }
+        
         temp[temp.Length - 1] = newSource;
 
         _audioSources = temp;
