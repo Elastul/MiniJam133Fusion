@@ -194,8 +194,8 @@ public class GrabIt : MonoBehaviour {
 			m_targetRB.AddForceAtPosition( m_grabSpeed  * dif * 100 , hitPointPos , ForceMode.Force);
 		else
 		{
-			float massDiff = m_grabSpeed - m_targetRB.mass > 0 ? m_grabSpeed - m_targetRB.mass : 0;
-			m_targetRB.velocity = massDiff * dif;		
+			float massDiff =  m_targetRB.mass > 1 ? 0 : 1;
+			m_targetRB.velocity = m_grabSpeed * dif * massDiff;		
 		}
 
 		
