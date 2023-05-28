@@ -17,7 +17,7 @@ public class MenuController : MonoBehaviour
 
     [SerializeField] private RotationController _rotationController;
 
-    [SerializeField] private AudioSource _musicSource;
+    protected AudioSource _musicSource;
     
 
     private bool _isActiveMenu = false;
@@ -37,8 +37,9 @@ public class MenuController : MonoBehaviour
         _senseXSlider.DOValue(PlayerPrefs.GetFloat("SensetivityX", 200f), 0.01f);
     }
 
-    void  OnEnable()
+    void OnEnable()
     {
+        _musicSource = FindObjectOfType<MusicManager>().GetComponent<AudioSource>();
         InputController.ESCButton += OnMenuStateChanged;
     }
 

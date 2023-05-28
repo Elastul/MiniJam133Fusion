@@ -12,7 +12,9 @@ public class MainMenuController : MenuController
         _level = PlayerPrefs.GetInt("Level", 1);
         if(_level < 2)
             _continueButton.interactable = false;
-
+        _musicSource = FindObjectOfType<MusicManager>().GetComponent<AudioSource>();
+        
+        DontDestroyOnLoad(_musicSource);
     }
 
     public void StartNewGame()
