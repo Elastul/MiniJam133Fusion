@@ -909,6 +909,16 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6889186121570813460, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6889186121570813460, guid: d16705cc2fe3baa49a70524122c48b65,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7115645875803082497, guid: d16705cc2fe3baa49a70524122c48b65,
         type: 3}
       propertyPath: m_AnchorMax.y

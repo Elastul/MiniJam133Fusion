@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class CursorView : MonoBehaviour
 {
     private Image _cursorImage;
+    public static CursorView Instance;
+    bool _spotted = false;
     void Start()
     {
+        Instance = this;
         _cursorImage = GetComponent<Image>();
     }
 
@@ -17,10 +20,14 @@ public class CursorView : MonoBehaviour
     // }
     public void OnInteractableSpotted()
     {
-        _cursorImage.transform.DOScale(1, 0.5f).SetEase(Ease.OutElastic);
+        if(_spotted) return;
+        _cursorImage.transform.DOScale(1, 0.2f).SetEase(Ease.InOutElastic);
+        _spotted = true;
     }
     public void OnInteractableLost()
     {
-        _cursorImage.transform.DOScale(0, 0.5f).SetEase(Ease.InElastic);
+        if(!_spotted) return;
+        _cursorImage.transform.DOScale(0, 0.2f).SetEase(Ease.OutElastic);
+        _spotted = false;
     }
 }

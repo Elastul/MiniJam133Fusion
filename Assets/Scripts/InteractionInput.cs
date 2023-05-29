@@ -40,9 +40,12 @@ public class InteractionInput : MonoBehaviour
             }
             
             interactable = hit.collider.GetComponent<IInteractable>() == null ? null : hit.collider.GetComponent<IInteractable>();
+            if(interactable != null || actor != null) CursorView.Instance.OnInteractableSpotted();
+            else CursorView.Instance.OnInteractableLost();
         }
         else
         {
+            CursorView.Instance.OnInteractableLost();
             actor = null;
             interactable = null;
         }
