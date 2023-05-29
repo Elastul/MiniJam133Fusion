@@ -1225,7 +1225,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 13400000, guid: d0e78d7256e800242a4cc36e2bfe2025,
+        type: 2}
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_RootOrder
