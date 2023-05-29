@@ -9,6 +9,7 @@ public class MainMenuController : MenuController
     protected override void Awake()
     {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         base.Awake();
         _level = PlayerPrefs.GetInt("Level", 1);
         if(_level < 2)
