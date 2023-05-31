@@ -127,7 +127,7 @@ public class GrabIt : MonoBehaviour {
 				if(Physics.Raycast(m_transform.position , m_transform.forward , out hitInfo , m_grabMaxDistance , m_collisionMask ))
 				{
 					Rigidbody rb = hitInfo.collider.GetComponent<Rigidbody>();
-					if(rb != null){							
+					if(rb != null && rb.mass <= 1){							
 						Set( rb , hitInfo.distance);						
 						m_grabbing = true;
 					}
@@ -140,6 +140,7 @@ public class GrabIt : MonoBehaviour {
 	void Set(Rigidbody target , float distance)
 	{	
 		m_targetRB = target;
+		m_targetRB.GetComponent<Collider>().isTrigger = true;
 		m_isHingeJoint = target.GetComponent<HingeJoint>() != null;		
 
 		//Rigidbody default properties	
@@ -163,7 +164,7 @@ public class GrabIt : MonoBehaviour {
 		m_hitPointObject.transform.position = m_targetPos;
 		m_hitPointObject.transform.LookAt(m_transform);
 		Physics.IgnoreCollision(_player, m_targetRB.gameObject.GetComponent<Collider>(), true);
-		//m_targetRB.GetComponent<Collider>().isTrigger = true;
+		//m_targetRB.GetComponent<Collider>().isTrigger = true;		
 				
 	}
 
@@ -173,6 +174,7 @@ public class GrabIt : MonoBehaviour {
 		
 		//Grab Properties	
 		//m_targetRB.useGravity = m_defaultProperties.m_useGravity;
+		m_targetRB.GetComponent<Collider>().isTrigger = false;
 		m_targetRB.drag = m_defaultProperties.m_drag;
 		m_targetRB.angularDrag = m_defaultProperties.m_angularDrag;
 		m_targetRB.constraints = m_defaultProperties.m_constraints;

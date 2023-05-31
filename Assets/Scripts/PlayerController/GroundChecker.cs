@@ -9,7 +9,7 @@ public class GroundChecker : MonoBehaviour
     
     public bool IsGrounded()
     {
-        return Physics.CheckSphere(transform.position, _radius, _mask);
+        return Physics.CheckSphere(transform.position, _radius, _mask, QueryTriggerInteraction.Ignore);
     }
     void OnDrawGizmos()
     {
