@@ -40,7 +40,7 @@ public class InputController : MonoBehaviour
         if(Input.GetMouseButtonDown(1)) RMBButton?.Invoke();
 
         MouseAxis = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        MovementAxis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        MovementAxis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
     }
 }

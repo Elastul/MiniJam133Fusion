@@ -331,7 +331,7 @@ MonoBehaviour:
     m_useGravity: 1
     m_drag: 10
     m_angularDrag: 10
-    m_constraints: 0
+    m_constraints: 112
   m_collisionMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1197,7 +1197,7 @@ PrefabInstance:
     - target: {fileID: 6686183993252579681, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: _radius
-      value: 0.17
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8807709623748094402, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
@@ -1221,12 +1221,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259256, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: _coyoteJumpTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259257, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: d0e78d7256e800242a4cc36e2bfe2025,
         type: 2}
+    - target: {fileID: 9080110479949259258, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259258, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1255,17 +1270,17 @@ PrefabInstance:
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259259, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
@@ -1305,6 +1320,21 @@ PrefabInstance:
     - target: {fileID: 9080110479949259263, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: JumpForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259263, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: JumpCooldown
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259263, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: SmoothFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259263, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: MovementSpeed
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []

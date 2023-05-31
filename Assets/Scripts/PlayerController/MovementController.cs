@@ -12,6 +12,13 @@ public class MovementController : MonoBehaviour
     [SerializeField] float _wallCheckDistance;
     [SerializeField] private LayerMask _wallLayerMask;
 
+    public float _coyoteJumpTime = 0.1f; // Time in seconds to allow coyote jump
+
+    private bool _isJumping = false;
+    private float _coyoteJumpTimer = 0f;
+
+    float _lastTimeJump;
+
     private void Start()
     {
         _groundChecker = GetComponentInChildren<GroundChecker>();
@@ -29,46 +36,58 @@ public class MovementController : MonoBehaviour
     {
         CalculateCurrentVelocity();
         _playerRigidbody.velocity = _calculatedVelocity;
+
+        if (!_groundChecker.IsGrounded())
+        {
+            _coyoteJumpTimer += Time.deltaTime;
+        }
+        else
+        {
+            _coyoteJumpTimer = 0f;
+        }
     }
 
     private void GetMovementAxis()
     {
         var horizontalMovement = InputController.MovementAxis.x;
         var verticalMovement = InputController.MovementAxis.y;
-
-        
-
-        // if(Physics.Raycast(transform.position, transform.forward * verticalMovement + transform.right * horizontalMovement, out var raycastHit, _wallCheckDistance, _wallLayerMask))
-        // {   
-        //     Vector3 hitDirection = raycastHit.point - transform.position;
-        //     float angle = Vector3.Angle(raycastHit.normal, hitDirection);
-        //     if(angle > 70)
-        //     {
-        //         verticalMovement = 0;
-        //         horizontalMovement = 0;
-        //     }
-            
-        // }
         _movementDirection = transform.forward * verticalMovement + transform.right * horizontalMovement;
         _movementDirection.Normalize();
-        
-        
     }
     private void CalculateCurrentVelocity()
     {
-        _calculatedVelocity = new Vector3
+        Vector3 targetVelocity = new Vector3
         (
             _movementDirection.x * _playerStats.MovementSpeed,
-            _playerRigidbody.velocity.y,
+            0,
             _movementDirection.z * _playerStats.MovementSpeed
         );
+
+        if (_movementDirection.magnitude < 0.1f)
+        {
+            _calculatedVelocity = Vector3.Lerp(_calculatedVelocity, targetVelocity, _playerStats.SmoothFactor);
+            _calculatedVelocity.y = _playerRigidbody.velocity.y;
+        }
+        else
+        {
+            _calculatedVelocity = targetVelocity;
+            _calculatedVelocity.y = _playerRigidbody.velocity.y;
+        }
     }
     private void PreformJump()
     {
-        if(!_groundChecker.IsGrounded())
+        if (Time.time - _lastTimeJump < _playerStats.JumpCooldown) return;
+
+        if (!_groundChecker.IsGrounded() && _coyoteJumpTimer > _coyoteJumpTime)
+        {
             return;
-            
-       _playerRigidbody.AddForce((new Vector3(InputController.MovementAxis.x, 0, InputController.MovementAxis.y) + Vector3.up) * _playerStats.JumpForce, ForceMode.Impulse);
+        }
+
+        _lastTimeJump = Time.time;
+        
+        _isJumping = true;
+        _playerRigidbody.velocity = new Vector3(_playerRigidbody.velocity.x, 0,_playerRigidbody.velocity.z);
+        _playerRigidbody.AddForce(new Vector3(0, 0, 0) + (Vector3.up  * _playerStats.JumpForce), ForceMode.Impulse);
     }
     void OnDestroy()
     {
