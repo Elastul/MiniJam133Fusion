@@ -75,7 +75,7 @@ public class MenuController : MonoBehaviour
     private void OpenWindow()
     {
         InputController.BlockAxis = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         var value = _isActiveMenu ? 1 : 0;
         HideUnhideGameplayUI();

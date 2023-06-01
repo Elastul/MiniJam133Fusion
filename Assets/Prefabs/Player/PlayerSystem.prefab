@@ -1307,6 +1307,21 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 5279501865698122854}
+    - target: {fileID: 9080110479949259261, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: tiltAngle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259261, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: tiltSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080110479949259261, guid: de59608855d42034abfa1f27ca841da4,
+        type: 3}
+      propertyPath: maxTiltAngle
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9080110479949259262, guid: de59608855d42034abfa1f27ca841da4,
         type: 3}
       propertyPath: _camera
